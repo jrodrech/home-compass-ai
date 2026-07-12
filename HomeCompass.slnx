@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="HomeCompass.Api/HomeCompass.Api.csproj" />
+  <Project Path="HomeCompass.Domain/HomeCompass.Domain.csproj" />
+</Solution>

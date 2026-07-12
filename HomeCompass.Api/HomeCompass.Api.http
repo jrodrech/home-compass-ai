@@ -1,0 +1,6 @@
+@HomeCompass.Api_HostAddress = http://localhost:5226
+
+GET {{HomeCompass.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
