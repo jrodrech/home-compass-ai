@@ -3,30 +3,44 @@ namespace HomeCompass.Domain.Buyers;
 public class BuyerProfile
 {
     public Guid Id { get; private set; }
+
     public Guid UserAccountId { get; private set; }
 
-    public int DesiredBedrooms { get; private set; }
-    public decimal MaximumMonthlyHousingBudget { get; private set; }
-    public bool RequiresVisualAccessibilityFeatures { get; private set; }
+    public FinancialProfile FinancialProfile { get; private set; }
 
-    private BuyerProfile() { }
+    public int MinimumBedrooms { get; private set; }
+
+    public bool NeedsAccessibilityFeatures { get; private set; }
+
+    private BuyerProfile()
+    {
+        FinancialProfile = null!;
+    }
 
     public BuyerProfile(
         Guid userAccountId,
-        int desiredBedrooms,
-        decimal maximumMonthlyHousingBudget,
-        bool requiresVisualAccessibilityFeatures)
+        FinancialProfile financialProfile,
+        int minimumBedrooms,
+        bool needsAccessibilityFeatures)
     {
-        if (desiredBedrooms < 1)
-            throw new ArgumentOutOfRangeException(nameof(desiredBedrooms));
+        if (userAccountId == Guid.Empty)
+            throw new ArgumentException(
+                "User account is required.",
+                nameof(userAccountId));
 
-        if (maximumMonthlyHousingBudget <= 0)
-            throw new ArgumentOutOfRangeException(nameof(maximumMonthlyHousingBudget));
+        if (financialProfile is null)
+            throw new ArgumentNullException(
+                nameof(financialProfile));
+
+        if (minimumBedrooms < 1)
+            throw new ArgumentOutOfRangeException(
+                nameof(minimumBedrooms));
 
         Id = Guid.NewGuid();
+
         UserAccountId = userAccountId;
-        DesiredBedrooms = desiredBedrooms;
-        MaximumMonthlyHousingBudget = maximumMonthlyHousingBudget;
-        RequiresVisualAccessibilityFeatures = requiresVisualAccessibilityFeatures;
+        FinancialProfile = financialProfile;
+        MinimumBedrooms = minimumBedrooms;
+        NeedsAccessibilityFeatures = needsAccessibilityFeatures;
     }
 }

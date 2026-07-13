@@ -9,22 +9,25 @@ public class Property
     public Address Address { get; private set; }
 
     public int Bedrooms { get; private set; }
+
     public decimal AskingPrice { get; private set; }
 
     public bool HasAccessibilityFeatures { get; private set; }
 
+
     private Property()
     {
-        Address = new Address(string.Empty, string.Empty, string.Empty, string.Empty);
+        Address = null!;
     }
 
+
     public Property(
-            Address address,
-            int bedrooms,
-            decimal askingPrice,
-            bool hasAccessibilityFeatures)  
+        Address address,
+        int bedrooms,
+        decimal askingPrice,
+        bool hasAccessibilityFeatures)
     {
-        if (address == null)
+        if (address is null)
             throw new ArgumentNullException(nameof(address));
 
         if (bedrooms < 1)
@@ -32,6 +35,7 @@ public class Property
 
         if (askingPrice <= 0)
             throw new ArgumentOutOfRangeException(nameof(askingPrice));
+
 
         Id = Guid.NewGuid();
         Address = address;

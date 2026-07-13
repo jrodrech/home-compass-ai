@@ -7,7 +7,6 @@ public sealed record Address
     public string State { get; }
     public string PostalCode { get; }
 
-
     public Address(
         string street,
         string city,
