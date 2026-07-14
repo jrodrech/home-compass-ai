@@ -43,4 +43,32 @@ public class BuyerProfile
         MinimumBedrooms = minimumBedrooms;
         NeedsAccessibilityFeatures = needsAccessibilityFeatures;
     }
+
+    public void UpdateFinancialProfile(FinancialProfile financialProfile)
+    {
+        ArgumentNullException.ThrowIfNull(financialProfile);
+
+        FinancialProfile = financialProfile;
+    }
+
+    public void ChangeMinimumBedrooms(int minimumBedrooms)
+    {
+        if (minimumBedrooms < 1)
+            throw new ArgumentOutOfRangeException(
+                nameof(minimumBedrooms));
+
+        MinimumBedrooms = minimumBedrooms;
+    }
+
+    public void RequireAccessibilityFeatures()
+    {
+        NeedsAccessibilityFeatures = true;
+    }
+
+    public void RemoveAccessibilityRequirement()
+    {
+        NeedsAccessibilityFeatures = false;
+    }
+
+
 }
