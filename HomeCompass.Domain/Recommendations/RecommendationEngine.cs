@@ -12,9 +12,9 @@ public sealed class RecommendationEngine
         ArgumentNullException.ThrowIfNull(buyer);
         ArgumentNullException.ThrowIfNull(property);
 
-        var score = 0;
+        int score = 0;
 
-        if (property.Price <= buyer.FinancialProfile.MaximumBudget)
+        if (property.AskingPrice <= buyer.FinancialProfile.MaximumBudget)
         {
             score += 40;
         }
