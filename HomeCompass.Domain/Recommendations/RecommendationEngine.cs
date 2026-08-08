@@ -16,7 +16,7 @@ public sealed class RecommendationEngine
         ArgumentNullException.ThrowIfNull(buyer);
         ArgumentNullException.ThrowIfNull(property);
 
-        int score = 0;
+        var score = 0;
 
         if (property.AskingPrice <= buyer.FinancialProfile.MaximumBudget)
         {
