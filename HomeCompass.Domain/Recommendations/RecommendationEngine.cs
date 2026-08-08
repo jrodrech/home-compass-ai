@@ -5,6 +5,10 @@ using HomeCompass.Domain.Properties;
 
 public sealed class RecommendationEngine
 {
+    private const int BudgetWeight = 40;
+    private const int BedroomWeight = 30;
+    private const int AccessibilityWeight = 30;
+
     public RecommendationScore Evaluate(
         BuyerProfile buyer,
         Property property)
@@ -14,20 +18,20 @@ public sealed class RecommendationEngine
 
         var score = 0;
 
-        if (property.Price <= buyer.FinancialProfile.MaximumBudget)
+        if (property.AskingPrice <= buyer.FinancialProfile.MaximumBudget)
         {
-            score += 40;
+            score += BudgetWeight;
         }
 
         if (property.Bedrooms >= buyer.MinimumBedrooms)
         {
-            score += 30;
+            score += BedroomWeight;
         }
 
         if (!buyer.NeedsAccessibilityFeatures ||
             property.HasAccessibilityFeatures)
         {
-            score += 30;
+            score += AccessibilityWeight;
         }
 
         return new RecommendationScore(score);

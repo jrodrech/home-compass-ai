@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="HomeCompass.Api/HomeCompass.Api.csproj" />
+  <Project Path="HomeCompass.Domain.Tests/HomeCompass.Domain.Tests.csproj" />
   <Project Path="HomeCompass.Domain/HomeCompass.Domain.csproj" />
 </Solution>

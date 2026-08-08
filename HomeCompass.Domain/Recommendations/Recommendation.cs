@@ -8,7 +8,7 @@ public class Recommendation
 
     public Guid PropertyId { get; private set; }
 
-    public decimal MatchScore { get; private set; }
+    public RecommendationScore MatchScore { get; private set; }
 
     public string Explanation { get; private set; }
 
@@ -24,7 +24,7 @@ public class Recommendation
     public Recommendation(
         Guid buyerProfileId,
         Guid propertyId,
-        decimal matchScore,
+        RecommendationScore matchScore,
         string explanation)
     {
         if (buyerProfileId == Guid.Empty)
@@ -37,8 +37,8 @@ public class Recommendation
                 "Property is required.",
                 nameof(propertyId));
 
-        if (matchScore < 0 || matchScore > 100)
-            throw new ArgumentOutOfRangeException(
+        if (matchScore == null)
+            throw new ArgumentNullException(
                 nameof(matchScore));
 
 
