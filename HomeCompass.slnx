@@ -2,4 +2,5 @@
   <Project Path="HomeCompass.Api/HomeCompass.Api.csproj" />
   <Project Path="HomeCompass.Domain.Tests/HomeCompass.Domain.Tests.csproj" />
   <Project Path="HomeCompass.Domain/HomeCompass.Domain.csproj" />
+  <Project Path="HomeCompass.Infrastructure/HomeCompass.Infrastructure.csproj" />
 </Solution>
